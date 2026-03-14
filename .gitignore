@@ -1,2 +1,2 @@
-06todoApp/node_modules
-06todoApp/dist
+**/node_modules
+**/dist
