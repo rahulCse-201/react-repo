@@ -1,0 +1,27 @@
+
+# any file name , ignore it 
+node_modules 
+.env 
+
+
+# Dependencies
+**/node_modules/
+
+# Environment variables
+**/.env
+
+# Build output
+**/build/
+**/dist/
+
+# Logs
+*.log
+
+
+
+
+# ignore folder anywhere
+# **/folderName/
+
+# #  ignore file anywhere
+# **/filename.ext

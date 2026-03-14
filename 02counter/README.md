@@ -38,5 +38,5 @@ dispatch() updates state → React re-renders.
 3. useContext
 
 Used to read shared state from a context.
-
-If the context value changes → components using it re-render.
+ 
+If the context value changes → components using it re-render.  
