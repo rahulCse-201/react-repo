@@ -1,19 +1,29 @@
-# Use of Props 
-props are inputs to a component. When some code or a card appear again an again the we create a component for specific card use we pass props that are inputs 
+# React Props - 
+What are Props?
+
+Props (short for properties) are **inputs passed to a component**.
+
+They allow us to **send data from a Parent component to a Child component**.
+
+Props help make components **reusable and dynamic**. 
 
  ## How To Handle Props
- props are pass in props named object by parent where we render that component 
+ props are pass in props named object by parent where we render that component   
 1️⃣ Using props object
 
+```javascript 
 function Component(props) {
   return <h1>{props.name}</h1>;
 }
+``` 
 
 2️⃣ Using Destructuring (Cleaner way)
 
+```javascript
 function Component({ name, age }) {
   return <h1>{name}</h1>;
 }
+```
 
 
 
@@ -42,12 +52,14 @@ Parent passes a function to update state.
 Child calls that function.
 
 Example Concept:
+```javascript
 Parent:
+const [value, setValue] = useState("");
 <Component value={value} setValue={setValue} />
 
 Child:
 setValue("New Value");
-
+```
 Now:
 Parent state updates
 React re-renders
