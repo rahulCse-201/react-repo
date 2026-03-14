@@ -1,74 +1,42 @@
-# React + Vite
+  # React Counter - understing useState()
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  when we change normal variable in React component, the **UI does not update**. Even if the value changes, React does not re-render the UI, because React does not track normal variables 
 
-Currently, two official plugins are available:
+  React only tracks:  
+   • State  
+   • Props  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+   Solution: useState Hook  
+   To allow Reack to track changes and update the UI, we use the useState hook.  
+   useState used to store and update local state 
 
-## React Compiler
+   React State Update Behavior
+Multiple State Updates
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Example:
 
-## Expanding the ESLint configuration
+setCount(count + 1)
+setCount(count + 1)
+setCount(count + 1)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Expected result: +3
 
+Actual result: +1
 
+Reason:
 
+React batches state updates, and all updates use the same previous value of count.
+  
+2. useReducer
 
+Used for complex state logic (alternative to useState).
 
-#  Focused on React Hooks 
-React runs the component function and builds a UI snapshot.
-If any UI-level change happens, React will not track it unless we use hooks.
+const [state, dispatch] = useReducer(reducer, initialState)
 
-React does not track normal variables.
-It only re-renders when: State changes, Props change
+dispatch() updates state → React re-renders.
 
-React watches state updates only through its own system.
+3. useContext
 
-When we define a hook (like useState), it tells React:
-If state changes → re-run component function → compare old UI with new UI → update DOM efficiently.
+Used to read shared state from a context.
 
-
-
-## Why Multiple Same Updates Sometimes Don’t Work
-React batches updates inside the same event. If same  updates  all use the same old value than at the end result will same as by one 
-
-### this not work =>  
-in this all use same value, so at the end result will be as by one 
-setCount(count + 1);
-setCount(count + 1);
-setCount(count + 1);
-
-### this will work => in thi all use different value
-setCount(prev => prev + 1);
-setCount(prev => prev + 1);
-setCount(prev => prev + 1);
-
-
-
-
-## Here used useState hook
-useState is a React Hook that allows a function component to:
-
--> Store data
--> Update that data
--> Tell React: “UI needs to re-render”
-
-That third point is the real reason it exists.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+If the context value changes → components using it re-render.
