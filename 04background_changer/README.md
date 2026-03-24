@@ -1,13 +1,14 @@
 # 📌 Project Overview
 
-A simple React project where clicking buttons changes the background color using useState.
+A simple React project where clicking buttons changes the background color using useState hook.
 
 This project focuses on understanding:
-React Hooks
-State-driven UI
-Re-rendering
-Declarative programming
+**React Hooks**  
+**State-driven UI**   
+**Re-rendering**
+**Declarative programming**
 
+**State-driven UI**  means ui does not change manually, instead it automatically updates when state change of dependent hook
 
 ## 🔹Imperative vs Declarative (Very Important)
 1️⃣ 🛠 Imperative (Normal JavaScript)
